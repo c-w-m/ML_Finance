@@ -1,4 +1,4 @@
-# ML_Finance_Codes
+# [ML_Finance_Codes](https://github.com/mfrdixon/ML_Finance_Codes/tree/master)
 This repository is the official repository for the latest version of the Python source code accompanying the textbook:
 Machine Learning in Finance: From Theory to Practice Book by Matthew Dixon, Igor Halperin and Paul Bilokon.
 
