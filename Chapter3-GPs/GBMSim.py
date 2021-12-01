@@ -10,7 +10,3 @@ def gbm(S0, mu, sigma, T = 1., N = 10, M= 1000):
         S[i+1,]=S[i,] + dS 
     
     return S
-
-
-
-

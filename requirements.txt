@@ -1,0 +1,6 @@
+# support jupyter notebooks and better visualization
+ipykernel
+jupyterlab
+matplotlib
+plotly
+seaborn
