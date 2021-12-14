@@ -2,8 +2,9 @@ import os
 import numpy as np
 import pandas as pd
 
+
 def clean_quotes(quotes):
-    quotes = quotes[quotes['Market Flag']=='E']
+    quotes = quotes[quotes['Market Flag'] == 'E']
     quotes = quotes[quotes['Quote Condition'].isnull()]
 
     quotes['Date'] = pd.to_datetime(quotes['Date'])
@@ -11,22 +12,24 @@ def clean_quotes(quotes):
 
     return quotes
 
+
 def save_sp500quotes():
     quotes = pd.read_csv('ES_Quotes.csv')
     dates = quotes['Date'].drop_duplicates()
 
     half = pd.to_timedelta('14:00:00')
-    first_half = clean_quotes(quotes[quotes['Date']==dates[0]])
+    first_half = clean_quotes(quotes[quotes['Date'] == dates[0]])
     for d, next_d in zip(dates[:-1], dates[1:]):
-         print(d)
-         both_halves = clean_quotes(quotes[quotes['Date']==next_d])
-         last_half_bool = both_halves['Time']<=half
+        print(d)
+        both_halves = clean_quotes(quotes[quotes['Date'] == next_d])
+        last_half_bool = both_halves['Time'] <= half
 
-         last_half = both_halves[last_half_bool]
-         pd.concat([first_half, last_half]).to_pickle(d.replace('/', '') + '_quotes.pickle')
+        last_half = both_halves[last_half_bool]
+        pd.concat([first_half, last_half]).to_pickle(d.replace('/', '') + '_quotes.pickle')
 
-         first_half = both_halves[~last_half_bool]
+        first_half = both_halves[~last_half_bool]
     # TODO: Consider weekends
+
 
 def ofi(bid_size, ask_size, bid_price, ask_price):
     ofi_ = pd.Series(0, bid_size.index)
@@ -52,18 +55,22 @@ def ofi(bid_size, ask_size, bid_price, ask_price):
     ofi_.name = 'OFI'
     return ofi_
 
+
 def mid_price(bid_price, ask_price):
-    return (bid_price + ask_price)/2
+    return (bid_price + ask_price) / 2
+
 
 def smart_price(bid_price, bid_size, ask_price, ask_size):
-    VWAP = pd.Series((bid_price*bid_size + ask_price*ask_size)/(ask_size+bid_size), bid_size.index, name='VWAP')
+    VWAP = pd.Series((bid_price * bid_size + ask_price * ask_size) / (ask_size + bid_size), bid_size.index, name='VWAP')
     return VWAP
+
 
 def mid_price_change(bid_price, ask_price):
     dmid = mid_price(bid_price, ask_price).diff()
     dmid.dropna(inplace=True)
     dmid.name = 'Mid price change'
     return dmid
+
 
 def time_as_index(data, inplace=True):
     if inplace is False:
@@ -73,8 +80,10 @@ def time_as_index(data, inplace=True):
     data.drop('Date', axis=1, inplace=True)
     data.set_index('Time', inplace=True)
 
+
 def to_resolution(t, dt):
-    return np.ceil(t/dt)*dt
+    return np.ceil(t / dt) * dt
+
 
 def to_reg_grid(series, dt, agg_fun):
     t0 = np.datetime64(0, 'D')
@@ -83,6 +92,7 @@ def to_reg_grid(series, dt, agg_fun):
     new_series = pd.concat([series, time_grid], axis=1).groupby('Time').agg(agg_fun).iloc[:, 0]
     new_series.name = series.name
     return new_series
+
 
 if __name__ == '__main__':
     sp500quotes = pd.read_pickle('09012013_quotes.pickle')
@@ -98,4 +108,3 @@ if __name__ == '__main__':
     dt = pd.to_timedelta('1s')
     sp500ofi1s = to_reg_grid(sp500ofi, dt, np.sum)
     sp500dmid1s = to_reg_grid(sp500dmid, dt, np.sum)
-
