@@ -4,7 +4,7 @@
 
 This chapter contains the following notebooks.
 
-For instructions on how to set up the Python environment and run the notebooks please refer to [SETUP.html](../SETUP.html) in the *ML_Finance_Codes* directory.
+For instructions on how to set up the Python environment and run the notebooks please refer to [SETUP.md](../SETUP.md) in the *ML_Finance_Codes* directory.
 
 ### ML_in_Finance-Deep-Classifiers.ipynb
 This notebook corresponds to Section 2.2 of Chapter 4 and demonstrates the configuration and properties of feed-forward neural networks. Several neural networks of increasing complexity are created to investigate how the perceptron units transform the input space. 

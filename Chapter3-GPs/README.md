@@ -2,7 +2,7 @@
 
 ## Chapter 3: Gaussian Processes
 
-For instructions on how to set up the Python environment and run the notebooks please refer to [SETUP.html](../SETUP.html) in the *ML_Finance_Codes* directory.
+For instructions on how to set up the Python environment and run the notebooks please refer to [SETUP.md](../SETUP.md) in the *ML_Finance_Codes* directory.
 
 This chapter contains the following notebooks:
 

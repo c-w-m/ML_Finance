@@ -4,7 +4,7 @@
 
 This chapter contains the following notebooks.
 
-For instructions on how to set up the Python environment and run the notebooks please refer to [SETUP.html](../SETUP.html) in the *ML_Finance_Codes* directory.
+For instructions on how to set up the Python environment and run the notebooks please refer to [SETUP.md](../SETUP.md) in the *ML_Finance_Codes* directory.
 
 ### ML_in_Finance_Bayesian_vs_Frequentist_Estimation.ipynb
  * This notebook illustrates the difference between Frequentist and Bayesian estimation under Bernoulli trials. Please refer to Sections 3 and 4 of Chapter 2 

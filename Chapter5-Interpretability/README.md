@@ -4,7 +4,7 @@
 
 This chapter contains the following notebooks.
 
-For instructions on how to set up the Python environment and run the notebooks please refer to [SETUP.html](../SETUP.html) in the *ML_Finance_Codes* directory.
+For instructions on how to set up the Python environment and run the notebooks please refer to [SETUP.md](../SETUP.md) in the *ML_Finance_Codes* directory.
 
 ### ML_in_Finance-Deep-Learning-Interpretability.ipynb
 * The purpose of this notebook is to illustrate a neural network interpretability method which is compatible with linear regression. 
